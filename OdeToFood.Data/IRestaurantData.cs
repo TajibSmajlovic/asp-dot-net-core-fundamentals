@@ -15,6 +15,8 @@ namespace OdeToFood.Data
 
         Restaurant Delete(int Id);
 
+        int GetCountOfRestaurants();
+
         int Commit();
     }
 }
