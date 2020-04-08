@@ -32,9 +32,11 @@ namespace OdeToFood
 
             services.AddScoped<IRestaurantData, DbRestaurantData>();
             services.AddRazorPages();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [Obsolete]
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -50,8 +52,14 @@ namespace OdeToFood
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            // app.UseNodeModules();
 
             app.UseRouting();
+            app.UseEndpoints(e =>
+            {
+                e.MapRazorPages();
+                e.MapControllers();
+            });
 
             app.UseAuthorization();
 
